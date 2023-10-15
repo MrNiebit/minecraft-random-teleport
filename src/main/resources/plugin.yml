@@ -1,0 +1,13 @@
+name: RandomTp
+version: '${project.version}'
+main: cn.lacknb.randomtp.RandomTp
+api-version: 1.20
+load: STARTUP
+
+author: git
+
+commands:
+  giveTp:
+    description: giveTp (给你一个物品)
+    permission: giveTp
+    usage: /giveTp
