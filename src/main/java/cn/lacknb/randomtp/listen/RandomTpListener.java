@@ -1,9 +1,6 @@
 package cn.lacknb.randomtp.listen;
 
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -127,12 +124,12 @@ public class RandomTpListener implements Listener, CommandExecutor {
             ItemStack teleportItem = new ItemStack(Material.COMPASS);
             ItemMeta meta = teleportItem.getItemMeta();
             assert meta != null;
-            // 创建一个EnchantmentStorageMeta对象，并设置颜色
-            EnchantmentStorageMeta enchantmentMeta = (EnchantmentStorageMeta) meta;
-            enchantmentMeta.setDisplayName("随机传送器");
-            enchantmentMeta.addStoredEnchant(Enchantment.DAMAGE_ALL, 1, true);
-
+            meta.setDisplayName("随机传送器");
+            meta.addEnchant(Enchantment.ARROW_INFINITE,1, true);
             teleportItem.setItemMeta(meta);
+            // 播放粒子效果
+            player.getWorld().spawnParticle(Particle.REDSTONE, player.getLocation().add(0, 1, 0), 50, 0.5, 0.5, 0.5, new Particle.DustOptions(Color.PURPLE, 1));
+            player.getWorld().playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 0);
 
              // 创建的随机传送器物品
 
